@@ -75,7 +75,6 @@ def RunningCost(KWH, KWHRate):
 def CO2Tonnes(KWH, CO2Rate, hours, days):
     return hours * days * KWH * CO2Rate
 
-
 ## LAYOUT
 #Title and header
 st.title("LED Efficicency Calculator")
@@ -106,14 +105,14 @@ for i in range(num_fittings):
     with col1:
         st.write(f"\n:red[Existing Fitting {i+1}:]")
         name = st.text_input(f"\nName of existing fitting {i+1}: ", placeholder="Type a name...")
-        qty = st.number_input(f"\nNumber of existing fitting {i+1} in circuit: ", step = 1, placeholder="Type a qty...")
+        qty = st.number_input(f"\nQuantity of existing fitting {i+1}: ", step = 1, placeholder="Type a qty...")
         wattage = st.number_input(f"\nWatts per existing fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
         st.divider()
    
     with col2:
         st.write(f"\n:green[Replacement Fitting {i+1}:]")
         name_2 = st.text_input(f"\nName of replacement fittng {i+1}: ", placeholder="Type a name...")
-        qty_2 = st.number_input(f"\nNumber of replacement fitting {i+1} in circuit: ",  step = 1, placeholder="Type a qty...")
+        qty_2 = st.number_input(f"\nQuantity of replacement fitting {i+1}: ", step = 1, placeholder="Type a qty...")
         wattage_2 = st.number_input(f"\nWatts per replacement fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
         st.divider()
     
@@ -130,7 +129,7 @@ for i in range(num_fittings):
     KWH_2 = KWHPerYear(kw_load_2, UsageHours, UsageDays)
     Annual_Running_Cost_2 = RunningCost(KWH_2, Rate)
     CO2Emissions_2 = CO2Tonnes(kw_load_2, CO2_Factor, UsageHours, UsageDays)
-                             
+
     # Append to lists (Existing fittings)
     names.append(name)
     quantities.append(qty)
@@ -141,7 +140,7 @@ for i in range(num_fittings):
     annual_KWH.append(KWH)
     annual_running_cost.append(Annual_Running_Cost)
     annual_CO2.append(CO2Emissions)
- 
+
     # Append to lists (Replacement fittings)
     names_2.append(name_2)
     quantities_2.append(qty_2)
@@ -150,7 +149,7 @@ for i in range(num_fittings):
     annual_KWH_2.append(KWH_2)
     annual_running_cost_2.append(Annual_Running_Cost_2)
     annual_CO2_2.append(CO2Emissions_2)
-    
+
 # Create DataFrame (Existing fittings)
 Exist_df = pd.DataFrame({
     'Name': names,
