@@ -194,7 +194,7 @@ Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_c
 Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(format_currency)
 
 Carbon_df = pd.DataFrame({
-    'Current total CO2 emissions (tonnes per year)': TotalExistCarbon
+    'Current total CO2 emissions (tonnes per year)': TotalExistCarbon,
     'New total CO2 emissions (tonnes per year)': TotalReplaceCarbon
 })
 
