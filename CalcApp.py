@@ -81,10 +81,12 @@ def RunningCost(KWH, KWHRate):
 def CO2Tonnes(KWH, CO2Rate, hours, days):
     return hours * days * KWH * CO2Rate
 
+st.header("Getting Started")
+st.write("""To get started, select how many fittings types you need using the 'Input Data' section on the sidebar.
+Once you've added all the fittings you need, click the 'calculate' button to see the results""")
 
 #Columns Layout
 col1, col2 = st.columns(2)
-
 
 #Side Bar
 with st.sidebar:
