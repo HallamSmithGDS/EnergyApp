@@ -194,7 +194,7 @@ Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_c
 Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(format_currency)
 
 Carbon_df = pd.DataFrame({
-    'Current': [TotalExistCarbon, TotalReplaceCarbon]
+    'Current': [TotalExistCarbon, TotalReplaceCarbon],
     'New': ['Current', 'New']
 }, index = [0])
 
