@@ -8,7 +8,6 @@ light fittings using Streamlit as an interface.
 @author: hallam.smith
 """
 
-
 import pandas as pd
 import locale
 import streamlit as st
@@ -51,8 +50,7 @@ annual_KWH_2 = []
 annual_running_cost_2 = []
 annual_CO2_2 = []
 
-# Function definitions
-
+## FUNCTION DEFINITIONS
 # Calculates how many Kilowatts are used per hour by fitting
 def KWPerHour(qty, watt):
     return (qty * watt) / 1000
@@ -77,6 +75,9 @@ def RunningCost(KWH, KWHRate):
 def CO2Tonnes(KWH, CO2Rate, hours, days):
     return hours * days * KWH * CO2Rate
 
+
+## LAYOUT
+#Title and header
 st.title("LED Efficicency Calculator")
 st.divider()
 st.header("Getting Started")
@@ -99,8 +100,6 @@ with st.sidebar:
     st.header("Input Data")
     num_fittings = st.number_input("Enter the number of fitting types: ", value = 1, step = 1, placeholder="Type a number...")
     st.divider()
-
-
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
@@ -175,6 +174,7 @@ Replace_df = pd.DataFrame({
     'Annual CO2 Emissions': annual_CO2_2
 })
 
+## RESULTS
 # Calculate energy savings
 TotalExistKW = sum(Exist_df['Annual KWH Use'])
 TotalReplaceKW = sum(Replace_df['Annual KWH Use'])
@@ -195,7 +195,6 @@ Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_c
 Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(format_currency)
 
 # Print results
-    
 st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
     st.header("Results")
@@ -209,4 +208,3 @@ if st.button("Calculate"):
     st.write('Annual KW Hour Reduction: ', KWHourSaving , 'KWH')
     st.write('Annual Electricity Bill Reduction:', CostSaving)
     st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
-   
