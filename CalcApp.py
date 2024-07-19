@@ -85,16 +85,17 @@ def CO2Tonnes(KWH, CO2Rate, hours, days):
 st.title("LED Efficiency Calculator")
 st.divider()
 
-st.header('Global Settings')
-st.divider()
-UsageHours = st.number_input('Usage Hours: ', value = 16, step = 1)
-UsageDays = st.number_input('Usage Days: ', value = 365, step = 1)
-Rate = st.number_input('KWH Rate (£): ', value = 0.175)
+with st.sidebar:
+    st.subheader('Global Settings')
+    st.divider()
+    UsageHours = st.number_input('Usage Hours: ', value = 16, step = 1)
+    UsageDays = st.number_input('Usage Days: ', value = 365, step = 1)
+    Rate = st.number_input('KWH Rate (£): ', value = 0.175)
 
-# Choose how many fittings to add
-st.header("Input Data")
-num_fittings = st.number_input("Enter the number of fitting types: ", step = 1, placeholder="Type a number...")
-st.divider()
+    # Choose how many fittings to add
+    st.header("Input Data")
+    num_fittings = st.number_input("Enter the number of fitting types: ", step = 1, placeholder="Type a number...")
+    st.divider()
 
 
 
