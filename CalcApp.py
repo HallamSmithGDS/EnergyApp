@@ -82,14 +82,14 @@ def CO2Tonnes(KWH, CO2Rate, hours, days):
     return hours * days * KWH * CO2Rate
 
 
-#Layout
+#Columns Layout
 col1, col2 = st.columns(2)
 
-#Title
-st.title("LED Efficiency Calculator")
-st.divider()
 
+#Side Bar
 with st.sidebar:
+    st.title("LED Efficiency Calculator")
+    st.divider()
     st.subheader('Global Settings')
     st.divider()
     UsageHours = st.number_input('Usage Hours: ', value = 16, step = 1)
@@ -105,7 +105,6 @@ with st.sidebar:
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
-    st.subheader(f"\nFitting {i+1}:")
     with col1:
         st.write(f"\n:red[Existing Fitting {i+1}:]")
         name = st.text_input(f"\nName of existing fitting {i+1}: ", placeholder="Type a name...")
