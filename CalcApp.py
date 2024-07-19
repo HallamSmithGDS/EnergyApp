@@ -195,7 +195,7 @@ Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(form
 
 Carbon_df = pd.DataFrame({
     'Current total CO2 emissions (tonnes per year)': TotalExistCarbon
-    'New total CO2 emissins (tonnes per year)': TotalReplaceCarbon
+    'New total CO2 emissions (tonnes per year)': TotalReplaceCarbon
 })
 
 st.bar_chart(Carbon_df)
