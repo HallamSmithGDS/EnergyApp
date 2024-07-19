@@ -81,6 +81,10 @@ def RunningCost(KWH, KWHRate):
 def CO2Tonnes(KWH, CO2Rate, hours, days):
     return hours * days * KWH * CO2Rate
 
+
+#Layout
+col1, col2 = st.columns(2)
+
 #Title
 st.title("LED Efficiency Calculator")
 st.divider()
@@ -101,18 +105,20 @@ with st.sidebar:
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
-    st.subheader(f"\nFitting {i+1}:")
-    st.write(f"\n:red[Existing Fitting {i+1}:]")
-    name = st.text_input(f"\nName of existing fitting {i+1}: ", placeholder="Type a name...")
-    qty = st.number_input(f"\nNumber of existing fitting {i+1} in circuit: ", step = 1, placeholder="Type a qty...")
-    wattage = st.number_input(f"\nWatts per existing fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
-    st.divider()
-    
-    st.write(f"\n:green[Replacement Fitting {i+1}:]")
-    name_2 = st.text_input(f"\nName of replacement fittng {i+1}: ", placeholder="Type a name...")
-    qty_2 = st.number_input(f"\nNumber of replacement fitting {i+1} in circuit: ",  step = 1, placeholder="Type a qty...")
-    wattage_2 = st.number_input(f"\nWatts per replacement fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
-    st.divider()
+    with col1:
+        st.subheader(f"\nFitting {i+1}:")
+        st.write(f"\n:red[Existing Fitting {i+1}:]")
+        name = st.text_input(f"\nName of existing fitting {i+1}: ", placeholder="Type a name...")
+        qty = st.number_input(f"\nNumber of existing fitting {i+1} in circuit: ", step = 1, placeholder="Type a qty...")
+        wattage = st.number_input(f"\nWatts per existing fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
+        st.divider()
+   
+    with col2:
+        st.write(f"\n:green[Replacement Fitting {i+1}:]")
+        name_2 = st.text_input(f"\nName of replacement fittng {i+1}: ", placeholder="Type a name...")
+        qty_2 = st.number_input(f"\nNumber of replacement fitting {i+1} in circuit: ",  step = 1, placeholder="Type a qty...")
+        wattage_2 = st.number_input(f"\nWatts per replacement fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
+        st.divider()
     
     # Perform calculations (Existing fittings)
     kw_load = KWPerHour(qty, wattage)
