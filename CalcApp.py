@@ -3,11 +3,7 @@
 Created on Thu Jul 18 12:29:19 2024
 
 Simple energy efficiency calculator for LED replacement of traditional
-light fittings
-
-Activate with the command:
-    
-.venv\Scripts\activate.bat
+light fittings using Streamlit as an interface.
 
 @author: hallam.smith
 """
@@ -91,8 +87,6 @@ col1, col2 = st.columns(2)
 
 #Side Bar
 with st.sidebar:
-    st.title("LED Efficiency Calculator")
-    st.divider()
     st.subheader('Global Settings')
     st.divider()
     UsageHours = st.number_input('Usage Hours: ', value = 16, step = 1)
