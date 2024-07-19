@@ -197,7 +197,7 @@ Carbon_df = pd.DataFrame({
     "Tonnes": [TotalExistCarbon, TotalReplaceCarbon],
 })
 
-st.bar_chart(Carbon_df, x_label = "CO2 emmissions (per year)", y_label = "Tonnes", horizontal=True)
+
 
 # Print results
 st.button("Reset", type = "primary", key = 'calculate')
@@ -213,3 +213,4 @@ if st.button("Calculate"):
     st.write('Annual KW Hour Reduction: ', KWHourSaving , 'KWH')
     st.write('Annual Electricity Bill Reduction:', CostSaving)
     st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
+    st.bar_chart(Carbon_df, x_label = "CO2 emmissions (per year)", y_label = "Tonnes", y = "Existing", "Replacement", horizontal=True)
