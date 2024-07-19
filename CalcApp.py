@@ -193,6 +193,13 @@ CO2Saving = round(float((TotalExistCarbon-TotalReplaceCarbon)/1000),2)
 Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_currency)
 Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(format_currency)
 
+Carbon_df = pd.DataFrame({
+    'Current total CO2 emissions (tonnes per year)': TotalExistCarbon
+    'New total CO2 emissins (tonnes per year)': TotalReplaceCarbon
+})
+
+st.bar_chart(Carbon_df)
+
 # Print results
 st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
