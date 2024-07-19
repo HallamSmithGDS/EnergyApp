@@ -18,7 +18,7 @@ import locale
 import streamlit as st
 
 # Set locale for currency formatting (example for GBP)
-locale.setlocale(locale.LC_ALL, 'en_GB.UTF-8')
+locale.setlocale(locale.LC_ALL, '')
 
 # Function to format numbers as currency
 def format_currency(value):
