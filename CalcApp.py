@@ -152,7 +152,7 @@ for i in range(num_fittings):
 
 # Create DataFrame (Existing fittings)
 Exist_df = pd.DataFrame({
-    'Name': names,
+    'Product Name': names,
     'Quantity': quantities,
     'Wattage': wattages,
     'KW Load Per Hour': kw_load_per_hour,
@@ -164,7 +164,7 @@ Exist_df = pd.DataFrame({
 
 # Create DataFrame (Replacement fittings)
 Replace_df = pd.DataFrame({
-    'Name': names_2,
+    'Product Name': names_2,
     'Quantity': quantities_2,
     'Wattage': wattages_2,
     'KW Load Per Hour': kw_load_per_hour_2,
@@ -199,10 +199,10 @@ if st.button("Calculate"):
     st.header("Results")
     st.write('')
     st.write(":red[Existing Fittings]")
-    st.write(Exist_df[['Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.write(Exist_df[['Product Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
     st.write(":green[Replacement Fittings]")
-    st.write(Replace_df[['Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.write(Replace_df[['Product Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
     st.write('Annual KW Hour Reduction: ', KWHourSaving , 'KWH')
     st.write('Annual Electricity Bill Reduction:', CostSaving)
