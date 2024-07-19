@@ -105,8 +105,8 @@ with st.sidebar:
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
+    st.subheader(f"\nFitting {i+1}:")
     with col1:
-        st.subheader(f"\nFitting {i+1}:")
         st.write(f"\n:red[Existing Fitting {i+1}:]")
         name = st.text_input(f"\nName of existing fitting {i+1}: ", placeholder="Type a name...")
         qty = st.number_input(f"\nNumber of existing fitting {i+1} in circuit: ", step = 1, placeholder="Type a qty...")
