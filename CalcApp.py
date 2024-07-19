@@ -112,7 +112,7 @@ for i in range(num_fittings):
     with col2:
         st.write(f"\n:green[Replacement Fitting {i+1}:]")
         name_2 = st.text_input(f"\nName of replacement fittng {i+1}: ", placeholder="Type a name...")
-        qty_2 = st.number_input(f"\nQuantity of replacement fitting {i+1}: ", step = 1, placeholder="Type a qty...")
+        qty_2 = st.number_input(f"\nQuantity of replacement fitting {i+1}: ", value = qty, step = 1, placeholder="Type a qty...")
         wattage_2 = st.number_input(f"\nWatts per replacement fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
         st.divider()
     
