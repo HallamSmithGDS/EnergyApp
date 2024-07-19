@@ -78,9 +78,11 @@ def CO2Tonnes(KWH, CO2Rate, hours, days):
     return hours * days * KWH * CO2Rate
 
 st.title("LED Efficicency Calculator")
+st.divider()
 st.header("Getting Started")
 st.write("""To get started, select how many fittings types you need using the 'Input Data' section on the sidebar.
 Once you've added all the fittings you need, click the 'calculate' button to see the results.""")
+st.divider()
 
 #Columns Layout
 col1, col2 = st.columns(2)
