@@ -227,6 +227,10 @@ if PaybackOn:
         'Replacement': replacement_cost,
         'Cost Difference': cost_difference
     })
+    Payback_df = Payback_df['Existing'].apply(format_currency)
+    Payback_df = Payback_df['Replacement'].apply(format_currency)
+    Payback_df = Payback_df['Cost Difference'].apply(format_currency)
+
 
 
 # Print results
