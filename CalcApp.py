@@ -271,10 +271,10 @@ st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
     st.header("Results")
     st.write(":red[Existing Fittings]")
-    st.write(Exist_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.dataframe(Exist_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']], hide_index = True)
     st.write('')
     st.write(":green[Replacement Fittings]")
-    st.write(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.dataframe(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']], hide_index = True)
     st.write('')
     st.divider()
     
@@ -293,7 +293,7 @@ if st.button("Calculate"):
         st.divider()
         st.subheader("Payback Calculations")
         Payback_df.style.hide()
-        st.write(Payback_df)
+        st.dataframe(Payback_df, use_container_width = True, hide_index = True)
         st.write('')
         if exact_year is not None:
             payback_years = int(exact_year)
