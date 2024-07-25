@@ -220,9 +220,5 @@ if st.button("Calculate"):
     st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
     st.write('')
     
-    graphcol1, graphcol2, graphcol3 = st.columns(3)   
     with graphcol1:
-        st.bar_chart(kw_df, x = 'Name', x_label = "Energy Useage", y_label = "KWH Per Hear", horizontal=False)
-
-    with graphcol2:
-        st.bar_chart(Carbon_df, x = 'Name', x_label = "CO2 Emissions", y_label = "Tonnes Per Year", horizontal=False)
+        st.bar_chart(carbon_df, x = 'Name', x_label = "KWH/Year", y_label = "CO2 (Tonnes)", horizontal=True)
