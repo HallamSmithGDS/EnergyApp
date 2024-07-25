@@ -215,10 +215,10 @@ if st.button("Calculate"):
     st.write(Replace_df[['Product Name','Quantity','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
     rescol1, rescol2 =st.columns(2)
-    with rescol1:
+    with rescol2:
         st.write('Annual KW Hour Reduction: ', KWHourSaving , 'KWH')
         st.write('Annual Electricity Bill Reduction:', CostSaving)
         st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
         st.write('')
-    with rescol2:
+    with rescol1:
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
