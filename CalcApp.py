@@ -257,8 +257,9 @@ if st.button("Calculate"):
     st.write(":green[Replacement Fittings]")
     st.write(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
-    st.subheader("Summary:")
+    st.subheader("Summary")
     rescol1, rescol2 = st.columns(2)
+    st.divider()
     with rescol2:
         st.write("Annual KW Hour Reduction: ", KWHourSaving , 'KWH')
         st.write("Annual Electricity Bill Reduction: ", CostSaving)
@@ -268,6 +269,8 @@ if st.button("Calculate"):
 
     # Prints payback calculator results and graph
     if PaybackOn:
+        st.divider()
+        st.subheader("Payback Calculations")
         st.write(Payback_df)
         st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
 
