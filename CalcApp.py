@@ -229,7 +229,7 @@ if PaybackOn:
     })
     Payback_df['Existing'] = Payback_df['Existing'].apply(format_currency)
     Payback_df['Replacement'] = Payback_df['Replacement'].apply(format_currency)
-    Payback_df['Cost Differnece'] = Payback_df['Cost Difference'].apply(format_currency)
+    Payback_df['Cost Difference'] = Payback_df['Cost Difference'].apply(format_currency)
 
 
 
