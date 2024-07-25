@@ -220,7 +220,7 @@ existing_cost.append(current_existing_cost)
 replacement_cost.append(current_replace_cost)
 cost_difference.append(current_cost_diff)
 
- Payback_df = pd.DataFrame({
+Payback_df = pd.DataFrame({
     'Year': year_count,
     'Existing': existing_cost,
     'Replacement': replacement_cost,
