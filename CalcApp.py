@@ -294,7 +294,7 @@ if st.button("Calculate"):
     if PaybackOn:
         st.divider()
         st.subheader("Payback Calculations")
-        st.write(Cumulative Energy Costs)
+        st.write("Cumulative Energy Costs")
         st.dataframe(Payback_df, use_container_width = True, hide_index = True)
         st.write('')
         if exact_year is not None:
