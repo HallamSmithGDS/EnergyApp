@@ -101,8 +101,8 @@ with st.sidebar:
     st.divider()
     on = st.toggle("Enable Payback Calculator")
     if on:
-        Purchase = st.number_input("LED Purchase Cost", placeholder="Type a number...")
-        Install = st.number_input("LED Install Cost", placeholder="Type a number...")
+        Purchase = st.number_input("LED Purchase Cost (£)", placeholder="Type a number...")
+        Install = st.number_input("LED Install Cost (£)", placeholder="Type a number...")
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
