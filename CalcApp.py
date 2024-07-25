@@ -274,5 +274,6 @@ if st.button("Calculate"):
         st.divider()
         st.subheader("Payback Calculations")
         st.write(Payback_df)
+        st.write('')
         st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
 
