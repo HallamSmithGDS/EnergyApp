@@ -240,6 +240,23 @@ if PaybackOn:
         'Replacement': replacement_cost,
         'Cost Difference': cost_difference
     })
+    # Find the exact point where Cost Difference reaches 0
+    previous_row = None
+    exact_year = None
+
+    for index, row in Payback_df.iterrows():
+        if row['Cost Difference'] >= 0 and previous_row is not None:
+            prev_year = previous_row['Year']
+            prev_cost_diff = previous_row['Cost Difference']
+            current_year = row['Year']
+            current_cost_diff = row['Cost Difference']
+
+            # Linear interpolation to find the exact year fraction
+            fraction_of_year = -prev_cost_diff / (current_cost_diff - prev_cost_diff)
+            exact_year = prev_year + fraction_of_year
+            break
+
+        previous_row = row
 
     #Creates dataframe for line graph
     Payback_Graph = Payback_df[['Year', 'Existing', 'Replacement']]
@@ -248,10 +265,6 @@ if PaybackOn:
     Payback_df['Existing'] = Payback_df['Existing'].apply(format_currency)
     Payback_df['Replacement'] = Payback_df['Replacement'].apply(format_currency)
     Payback_df['Cost Difference'] = Payback_df['Cost Difference'].apply(format_currency)
-
-    PaybackYears = math.floor((TotalCost / CostSavingMonthly)/12)
-
-
 
 # Print results
 st.button("Reset", type = "primary", key = 'calculate')
@@ -282,4 +295,9 @@ if st.button("Calculate"):
         st.write(Payback_df)
         st.write('')
         st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
-        st.write(PaybackYears)
+        if exact_year is not None:
+            payback_years = int(exact_year)
+            payback_months = round((exact_year - payback_years)*12)
+            st.write(f"The system will pay for itself after {payback_years} years and {payback_months} months.")
+        else:
+            st.write("The system does not pay for itself within the given years.")
