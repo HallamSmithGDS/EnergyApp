@@ -294,7 +294,7 @@ if st.button("Calculate"):
     if PaybackOn:
         st.divider()
         st.subheader("Payback Calculations")
-        Payback_df.style.hide()
+        st.write(Cumulative Energy Costs)
         st.dataframe(Payback_df, use_container_width = True, hide_index = True)
         st.write('')
         if exact_year is not None:
@@ -303,4 +303,4 @@ if st.button("Calculate"):
             st.write(f"The system will pay for itself after {payback_years} years and {payback_months} months.")
         else:
             st.write("The system does not pay for itself within the given years.")
-        st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)', color = ["#FF4436", "#34CC57"])
+        st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Cumulative Energy Cost (£)', color = ["#FF4436", "#34CC57"])
