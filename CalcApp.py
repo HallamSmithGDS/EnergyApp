@@ -204,28 +204,28 @@ Carbon_df = pd.DataFrame({
 })
 
 
-if PaybackOn:
-    year_count = []
-    existing_cost = []
-    replacement_cost = []
-    cost_difference = []
-    for i in range(Years):
-        current_year = (f"\nYear {i+1}")
-        current_existing_cost = (TotalExistCost*(i+1))
-        current_replace_cost = ((TotalReplaceCost*(i+1)) + Purchase + Install)
-        current_cost_diff = current_existing_cost - current_replace_cost
 
-    year_count.append(current_year)
-    existing_cost.append(current_existing_cost)
-    replacement_cost.append(current_replace_cost)
+year_count = []
+existing_cost = []
+replacement_cost = []
+cost_difference = []
+for i in range(Years):
+    current_year = (f"\nYear {i+1}")
+    current_existing_cost = (TotalExistCost*(i+1))
+    current_replace_cost = ((TotalReplaceCost*(i+1)) + Purchase + Install)
+    current_cost_diff = current_existing_cost - current_replace_cost
+
+year_count.append(current_year)
+existing_cost.append(current_existing_cost)
+replacement_cost.append(current_replace_cost)
     cost_difference.append(current_cost_diff)
 
-    Payback_df = pd.DataFrame({
-        'Year': year_count,
-        'Existing': existing_cost,
-        'Replacement': replacement_cost,
-        'Cost Difference': cost_difference
-    })
+ Payback_df = pd.DataFrame({
+    'Year': year_count,
+    'Existing': existing_cost,
+    'Replacement': replacement_cost,
+    'Cost Difference': cost_difference
+})
 
 # Print results
 st.button("Reset", type = "primary", key = 'calculate')
