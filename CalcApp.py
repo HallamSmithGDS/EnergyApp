@@ -214,9 +214,9 @@ if st.button("Calculate"):
     st.write(":green[Replacement Fittings]")
     st.write(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
+    st.subheader("Summary:")
     rescol1, rescol2 =st.columns(2)
     with rescol2:
-        st.subheader("Summary:")
         st.write("Annual KW Hour Reduction: ", KWHourSaving , 'KWH')
         st.write("Annual Electricity Bill Reduction: ", CostSaving)
         st.write("Annual CO2 Reduction: ", CO2Saving , 'Tonnes')
