@@ -91,9 +91,8 @@ col1, col2 = st.columns(2)
 with st.sidebar:
     st.subheader('Global Settings')
     st.divider()
-    UsageHours = st.number_input('Usage Hours: ', value = 16, step = 1)
-    UsageDays = st.number_input('Usage Days: ', value = 365, step = 1)
-    Rate = st.number_input('KWH Rate (£): ', value = 0.175)
+    UsageHours = st.slider('Usage Hours: ', 1, 24, 16)
+    UsageDays = st.number_input('Usage Days: ', 1, 365, 365)
 
     # Choose how many fittings to add
     st.header("Input Data")
@@ -103,6 +102,7 @@ with st.sidebar:
     if PaybackOn:
         Purchase = st.number_input("LED Purchase Cost (£)", placeholder = "Type a number...")
         Install = st.number_input("LED Install Cost (£)", placeholder = "Type a number...")
+        Rate = st.number_input('KWH Rate (£): ', value = 0.175)
         Years = st.slider("Years", 1, 15, 10)
 
 # Input parameters for multiple fittings
