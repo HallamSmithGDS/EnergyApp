@@ -293,7 +293,7 @@ if st.button("Calculate"):
         st.divider()
         st.subheader("Payback Calculations")
         Payback_df.style.hide()
-        st.write(Payback_df.to_string(index=False))
+        st.write(Payback_df)
         st.write('')
         if exact_year is not None:
             payback_years = int(exact_year)
