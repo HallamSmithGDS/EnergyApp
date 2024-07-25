@@ -209,7 +209,7 @@ if PaybackOn:
     existing_cost = []
     replacement_cost = []
     cost_difference = []
-    for i in range(years):
+    for i in range(Years):
         current_year = (f"\nYear {i+1}")
         current_existing_cost = (TotalExistCost*(i+1))
         current_replace_cost = ((TotalReplaceCost*(i+1)) + Purchase + Install)
