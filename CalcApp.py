@@ -227,7 +227,7 @@ if PaybackOn:
         'Replacement': replacement_cost,
         'Cost Difference': cost_difference
     })
-    Payback_Graph = payback_df[['Year', 'Existing', 'Replacement']]
+    Payback_Graph = Payback_df[['Year', 'Existing', 'Replacement']]
     Payback_df['Existing'] = Payback_df['Existing'].apply(format_currency)
     Payback_df['Replacement'] = Payback_df['Replacement'].apply(format_currency)
     Payback_df['Cost Difference'] = Payback_df['Cost Difference'].apply(format_currency)
