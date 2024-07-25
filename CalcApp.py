@@ -200,6 +200,8 @@ CostSaving = TotalExistCost-TotalReplaceCost
 CostSavingMonthly = CostSaving / 12
 CostSaving = format_currency(CostSaving)
 
+TotalRelampCost = sum(Exist_df['Annual Relamp Cost'])
+
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
 TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])
@@ -224,7 +226,7 @@ cost_difference = []
 if PaybackOn:
     for i in range(Years):
         current_year = (i+1)
-        current_existing_cost = (TotalExistCost*(i + 1) * (1 + (i * annual_rate_increase)))
+        current_existing_cost = ((TotalExistCost + TotalRelampCost) * (i + 1) * (1 + (i * annual_rate_increase)))
         current_replace_cost = ((TotalReplaceCost * (i + 1)) * ((1 + (i * annual_rate_increase))) + Purchase + Install)
         current_cost_diff = current_existing_cost - current_replace_cost
 
