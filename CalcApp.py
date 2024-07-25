@@ -92,8 +92,8 @@ with st.sidebar:
     st.subheader('Global Settings')
     st.divider()
     UsageHours = st.slider('Usage Hours: ', 1, 24, 16)
-    UsageDays = st.number_input('Usage Days: ', 1, 365, 365)
-
+    UsageDays = st.slider('Usage Days: ', 1, 365, 365)
+    
     # Choose how many fittings to add
     st.header("Input Data")
     num_fittings = st.number_input("Enter the number of fitting types: ", value = 1, step = 1, placeholder = "Type a number...")
