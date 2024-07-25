@@ -185,9 +185,9 @@ TotalReplaceCost = sum(Replace_df['Annual Running Cost'])
 CostSaving = format_currency(TotalExistCost-TotalReplaceCost)
 
 # Calculate carbon savings
-TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
-TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])
-CO2Saving = round(float((TotalExistCarbon-TotalReplaceCarbon)/1000),2)
+TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])/1000
+TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])/1000
+CO2Saving = round(float(TotalExistCarbon-TotalReplaceCarbon),2)
 
 # Format dataframes to disply currency
 Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_currency)
