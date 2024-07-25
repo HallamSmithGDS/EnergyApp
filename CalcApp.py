@@ -208,15 +208,13 @@ kw_df = pd.DataFrame({
 st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
     st.header("Results")
+    st.write(":red[Existing Fittings]")
+    st.write(Exist_df[['Product Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.write('')
+    st.write(":green[Replacement Fittings]")
+    st.write(Replace_df[['Product Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.write('')
     rescol1, rescol2 =st.columns(2)
-    with rescol1:
-        st.write(":red[Existing Fittings]")
-        st.write(Exist_df[['Product Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
-        st.write('')
-    with rescol2:
-        st.write(":green[Replacement Fittings]")
-        st.write(Replace_df[['Product Name','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
-        st.write('')
     with rescol1:
         st.write('Annual KW Hour Reduction: ', KWHourSaving , 'KWH')
         st.write('Annual Electricity Bill Reduction:', CostSaving)
