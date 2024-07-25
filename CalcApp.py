@@ -215,7 +215,6 @@ year_count = []
 existing_cost = []
 replacement_cost = []
 cost_difference = []
-annual_rate_increase = 0.05
 
 # Payback calculator create dataframe
 if PaybackOn:
