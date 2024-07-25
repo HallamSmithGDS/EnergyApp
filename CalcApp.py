@@ -271,10 +271,12 @@ st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
     st.header("Results")
     st.write(":red[Existing Fittings]")
-    st.dataframe(Exist_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']], hide_index = True)
+    st.dataframe(Exist_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']], 
+    use_container_width = True, hide_index = True)
     st.write('')
     st.write(":green[Replacement Fittings]")
-    st.dataframe(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']], hide_index = True)
+    st.dataframe(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']], 
+    use_container_width = True, hide_index = True)
     st.write('')
     st.divider()
     
