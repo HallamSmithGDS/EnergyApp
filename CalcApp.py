@@ -211,7 +211,7 @@ cost_difference = []
 
 if PaybackOn:
     for i in range(Years):
-        current_year = (f"\nYear {i+1}")
+        current_year = (i+1)
         current_existing_cost = (TotalExistCost*(i+1))
         current_replace_cost = ((TotalReplaceCost*(i+1)) + Purchase + Install)
         current_cost_diff = current_existing_cost - current_replace_cost
@@ -249,5 +249,5 @@ if st.button("Calculate"):
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
     if PaybackOn:
         st.write(Payback_df)
-        st.line_chart(Payback_df, x = 'Year')
+        st.line_chart(Payback_df[['Existing',Replacement]], x = 'Year')
 
