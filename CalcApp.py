@@ -209,10 +209,10 @@ st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
     st.header("Results")
     st.write(":red[Existing Fittings]")
-    st.write(Exist_df[['Product Name','Quantity','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.write(Exist_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
     st.write(":green[Replacement Fittings]")
-    st.write(Replace_df[['Product Name','Quantity','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
+    st.write(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
     rescol1, rescol2 =st.columns(2)
     with rescol2:
