@@ -194,7 +194,8 @@ Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_c
 Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(format_currency)
 
 Carbon_df = pd.DataFrame({
-    "Tonnes": [TotalExistCarbon, TotalReplaceCarbon]
+    'Name': ['Existing', 'Replacement'],
+    'Amount': [TotalExistCarbon, TotalReplaceCarbon]
 })
 
 
@@ -214,4 +215,4 @@ if st.button("Calculate"):
     st.write('Annual Electricity Bill Reduction:', CostSaving)
     st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
     st.write('')
-    st.bar_chart(Carbon_df, x_label = "CO2 emmissions (per year)", y_label = "Tonnes", horizontal=True)
+    st.bar_chart(Carbon_df, x = 'Name', x_label = "CO2 emmissions (per year)", y_label = "Tonnes", horizontal=True)
