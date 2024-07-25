@@ -77,7 +77,7 @@ def CO2Tonnes(KWH, CO2Rate, hours, days):
 
 ## LAYOUT
 #Title and header
-st.title("LED Efficicency Calculator")
+st.title("LED Efficiency Calculator")
 st.divider()
 st.header("Getting Started")
 st.write("""To get started, select how many fittings types you need using the 'Input Data' section on the sidebar.
@@ -111,7 +111,7 @@ for i in range(num_fittings):
    
     with col2:
         st.write(f"\n:green[Replacement Fitting {i+1}:]")
-        name_2 = st.text_input(f"\nName of replacement fittng {i+1}: ", placeholder="Type a name...")
+        name_2 = st.text_input(f"\nName of replacement fitting {i+1}: ", placeholder="Type a name...")
         qty_2 = st.number_input(f"\nQuantity of replacement fitting {i+1}: ", value = qty, step = 1, placeholder="Type a qty...")
         wattage_2 = st.number_input(f"\nWatts per replacement fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
         st.divider()
@@ -186,7 +186,7 @@ CostSaving = format_currency(TotalExistCost-TotalReplaceCost)
 
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
-TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])/1000
+TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])
 CO2Saving = round(float(TotalExistCarbon-TotalReplaceCarbon),2)
 
 # Format dataframes to disply currency
@@ -219,4 +219,4 @@ if st.button("Calculate"):
     st.write('Annual Electricity Bill Reduction:', CostSaving)
     st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
     st.write('')
-    st.bar_chart(Carbon_df, x = 'Name', x_label = "CO2 Emissions", y_label = "Tonnes Per Year", horizontal=True)
+    st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", horizontal=True, height = 100)
