@@ -104,6 +104,12 @@ with st.sidebar:
         Install = st.number_input("LED Install Cost (£)", placeholder = "Type a number...")
         Rate = st.number_input('KWH Rate (£): ', value = 0.175)
         Years = st.slider("Years", 1, 15, 10)
+        st.divider()
+    AdvancedOn = st.toggle("Show Advanced Settings")
+    if AdvancedOn:
+        annual_rate_increase = (st.slider('Annual Energy Cost Increase (%)', 0, 10, 5.0) / 100)
+    else:
+        annual_rate_increase = 0.05
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
@@ -193,23 +199,24 @@ CostSaving = format_currency(TotalExistCost-TotalReplaceCost)
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
 TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])
 CO2Saving = round(float(TotalExistCarbon-TotalReplaceCarbon),2)
-
-# Format dataframes to display currency
-Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_currency)
-Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(format_currency)
-
 Carbon_df = pd.DataFrame({
     'Name': ['Existing', 'Replacement'],
     'Amount': [TotalExistCarbon, TotalReplaceCarbon]
 })
 
+# Format dataframes to display currency
+Exist_df['Annual Running Cost'] = Exist_df['Annual Running Cost'].apply(format_currency)
+Replace_df['Annual Running Cost'] = Replace_df['Annual Running Cost'].apply(format_currency)
 
+## PAYBACK CALCULATOR
+# Initialise lists for payback calculator dataframe
 year_count = []
 existing_cost = []
 replacement_cost = []
 cost_difference = []
 annual_rate_increase = 0.05
 
+# Payback calculator create dataframe
 if PaybackOn:
     for i in range(Years):
         current_year = (i+1)
@@ -217,6 +224,7 @@ if PaybackOn:
         current_replace_cost = ((TotalReplaceCost * (i + 1)) * ((1 + (i * annual_rate_increase))) + Purchase + Install)
         current_cost_diff = current_existing_cost - current_replace_cost
 
+        # Appends data to lists
         year_count.append(current_year)
         existing_cost.append(current_existing_cost)
         replacement_cost.append(current_replace_cost)
@@ -228,7 +236,11 @@ if PaybackOn:
         'Replacement': replacement_cost,
         'Cost Difference': cost_difference
     })
+
+    #Creates dataframe for line graph
     Payback_Graph = Payback_df[['Year', 'Existing', 'Replacement']]
+
+    #Formats data as currency
     Payback_df['Existing'] = Payback_df['Existing'].apply(format_currency)
     Payback_df['Replacement'] = Payback_df['Replacement'].apply(format_currency)
     Payback_df['Cost Difference'] = Payback_df['Cost Difference'].apply(format_currency)
@@ -253,6 +265,8 @@ if st.button("Calculate"):
         st.write("Annual CO2 Reduction: ", CO2Saving , 'Tonnes')
     with rescol1:
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
+
+    # Prints payback calculator results and graph
     if PaybackOn:
         st.write(Payback_df)
         st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
