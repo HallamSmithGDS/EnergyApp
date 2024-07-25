@@ -245,8 +245,6 @@ if PaybackOn:
     Payback_df['Replacement'] = Payback_df['Replacement'].apply(format_currency)
     Payback_df['Cost Difference'] = Payback_df['Cost Difference'].apply(format_currency)
 
-
-
 # Print results
 st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
@@ -276,4 +274,3 @@ if st.button("Calculate"):
         st.write(Payback_df)
         st.write('')
         st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
-
