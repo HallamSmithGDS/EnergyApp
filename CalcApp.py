@@ -286,7 +286,7 @@ if st.button("Calculate"):
         st.write("Annual Electricity Bill Reduction: ", CostSaving)
         st.write("Annual CO2 Reduction: ", CO2Saving , 'Tonnes')
     with rescol1:
-        st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = ["#FF4436", "#34CC57"], horizontal=True, height = 200)
+        st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
 
     # Prints payback calculator results and graph
     if PaybackOn:
