@@ -227,6 +227,7 @@ if PaybackOn:
         'Replacement': replacement_cost,
         'Cost Difference': cost_difference
     })
+    Payback_Graph = payback_df[['Year', 'Existing', 'Replacement']]
     Payback_df['Existing'] = Payback_df['Existing'].apply(format_currency)
     Payback_df['Replacement'] = Payback_df['Replacement'].apply(format_currency)
     Payback_df['Cost Difference'] = Payback_df['Cost Difference'].apply(format_currency)
@@ -253,5 +254,5 @@ if st.button("Calculate"):
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
     if PaybackOn:
         st.write(Payback_df)
-        st.line_chart(Payback_df, x = 'Year')
+        st.line_chart(Payback_Graph, x = 'Year')
 
