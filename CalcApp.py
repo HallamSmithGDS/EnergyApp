@@ -294,10 +294,10 @@ if st.button("Calculate"):
         st.subheader("Payback Calculations")
         st.write(Payback_df)
         st.write('')
-        st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
         if exact_year is not None:
             payback_years = int(exact_year)
             payback_months = round((exact_year - payback_years)*12)
             st.write(f"The system will pay for itself after {payback_years} years and {payback_months} months.")
         else:
             st.write("The system does not pay for itself within the given years.")
+        st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
