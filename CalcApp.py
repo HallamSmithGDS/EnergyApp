@@ -205,8 +205,26 @@ Carbon_df = pd.DataFrame({
 
 
 if PaybackOn:
-    Payback_df = pd.DataFrame({
+    year_count = []
+    existing_cost = []
+    replacement_cost = []
+    cost_difference = []
+    for i in range(years):
+        current_year = (f"\nYear {i+1}")
+        current_existing_cost = (TotalExistCost*(i+1))
+        current_replace_cost = ((TotalReplaceCost*(i+1)) + Purchase + Install)
+        current_cost_diff = current_existing_cost - current_replace_cost
 
+    year_count.append(current_year)
+    existing_cost.append(current_existing_cost)
+    replacement_cost.append(current_replace_cost)
+    cost_difference.append(current_cost_diff)
+
+    Payback_df = pd.dataframe({
+        'Year': year_count,
+        'Existing': existing_cost,
+        'Replacement': replacement_cost,
+        'Cost Difference': cost_difference
     })
 
 # Print results
@@ -227,4 +245,6 @@ if st.button("Calculate"):
         st.write("Annual CO2 Reduction: ", CO2Saving , 'Tonnes')
     with rescol1:
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
+    if PaybackOn:
+        st.write(Payback_df)
 
