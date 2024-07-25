@@ -300,4 +300,4 @@ if st.button("Calculate"):
             st.write(f"The system will pay for itself after {payback_years} years and {payback_months} months.")
         else:
             st.write("The system does not pay for itself within the given years.")
-        st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)', colour = ["#ff4436", "#34cc57"])
+        st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)', colour = ["#FF4436", "#34CC57"])
