@@ -11,6 +11,7 @@ light fittings using Streamlit as an interface.
 import pandas as pd
 import locale
 import streamlit as st
+import math
 
 # Set locale for currency formatting (example for GBP)
 locale.setlocale(locale.LC_ALL, 'en_GB.UTF-8')
@@ -102,6 +103,7 @@ with st.sidebar:
     if PaybackOn:
         Purchase = st.number_input("LED Purchase Cost (£)", placeholder = "Type a number...")
         Install = st.number_input("LED Install Cost (£)", placeholder = "Type a number...")
+        TotalCost = Purchase + Install
         Rate = st.number_input('KWH Rate (£): ', value = 0.175)
         Years = st.slider("Years", 1, 15, 10)
         st.divider()
@@ -194,7 +196,9 @@ KWHourSaving = round(float(TotalExistKW-TotalReplaceKW),2)
 # Calculate financial savings
 TotalExistCost = sum(Exist_df['Annual Running Cost'])
 TotalReplaceCost = sum(Replace_df['Annual Running Cost'])
-CostSaving = format_currency(TotalExistCost-TotalReplaceCost)
+CostSaving = TotalExistCost-TotalReplaceCost
+CostSavingMonthly = CostSaving / 12
+CostSaving = CostSaving.apply(format_currency)
 
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
@@ -245,6 +249,10 @@ if PaybackOn:
     Payback_df['Replacement'] = Payback_df['Replacement'].apply(format_currency)
     Payback_df['Cost Difference'] = Payback_df['Cost Difference'].apply(format_currency)
 
+    PaybackYears = math.floor((TotalCost / CostSavingMonthly)/12)
+
+
+
 # Print results
 st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
@@ -274,3 +282,4 @@ if st.button("Calculate"):
         st.write(Payback_df)
         st.write('')
         st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Energy Cost (£)')
+        st.write(PaybackYears)
