@@ -105,7 +105,7 @@ with st.sidebar:
         Rate = st.number_input('KWH Rate (£): ', value = 0.175)
         Years = st.slider("Years", 1, 15, 10)
         st.divider()
-    AdvancedOn = st.toggle("Show Advanced Settings")
+    AdvancedOn = st.toggle("Enable Advanced Settings")
     if AdvancedOn:
         annual_rate_slider = st.slider("Annual Energy Cost Increase (%)", 0.0, 10.0, 5.0) 
         annual_rate_increase = annual_rate_slider / 100
