@@ -214,7 +214,7 @@ if PaybackOn:
     for i in range(Years):
         current_year = (i+1)
         current_existing_cost = (TotalExistCost*(i + 1) * (1 + (i * annual_rate_increase)))
-        current_replace_cost = (((TotalReplaceCost * (i + 1)) * ((1 + (i * annual_rate_increase))) + Purchase + Install)
+        current_replace_cost = ((TotalReplaceCost * (i + 1)) * ((1 + (i * annual_rate_increase))) + Purchase + Install)
         current_cost_diff = current_existing_cost - current_replace_cost
 
         year_count.append(current_year)
