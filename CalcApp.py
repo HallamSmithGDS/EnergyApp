@@ -73,7 +73,7 @@ def RunningCost(KWH, KWHRate):
 
 # Works out annual CO2 emissions (based on C02 factor)
 def CO2Tonnes(KWH, CO2Rate, hours, days):
-    return hours * days * KWH * CO2Rate
+    return hours * days * KWH * CO2Rate / 1000
 
 ## LAYOUT
 #Title and header
@@ -185,8 +185,8 @@ TotalReplaceCost = sum(Replace_df['Annual Running Cost'])
 CostSaving = format_currency(TotalExistCost-TotalReplaceCost)
 
 # Calculate carbon savings
-TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])/1000
-TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])/1000
+TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
+TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])
 CO2Saving = round(float(TotalExistCarbon-TotalReplaceCarbon),2)
 
 # Format dataframes to disply currency
