@@ -107,7 +107,7 @@ with st.sidebar:
         st.divider()
     AdvancedOn = st.toggle("Show Advanced Settings")
     if AdvancedOn:
-        annual_rate_slider = st.slider('Annual Energy Cost Increase (%)', 0, 10, 5.0) 
+        annual_rate_slider = st.slider("Annual Energy Cost Increase (%)", 0, 10, 5.0) 
         annual_rate_increase = annual_rate_slider / 100
     else:
         annual_rate_increase = 0.05
