@@ -198,7 +198,7 @@ TotalExistCost = sum(Exist_df['Annual Running Cost'])
 TotalReplaceCost = sum(Replace_df['Annual Running Cost'])
 CostSaving = TotalExistCost-TotalReplaceCost
 CostSavingMonthly = CostSaving / 12
-CostSaving = CostSaving.apply(format_currency)
+CostSaving = format_currency(CostSaving)
 
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
