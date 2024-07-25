@@ -219,4 +219,4 @@ if st.button("Calculate"):
     st.write('Annual Electricity Bill Reduction:', CostSaving)
     st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
     st.write('')
-    st.bar_chart(carbon_df, x = 'Name', x_label = "KWH/Year", y_label = "CO2 (Tonnes)", horizontal=True)
+    st.bar_chart(carbon_df, x = 'Name', x_label = "KWH/Year", y_label = "CO2 Tonnes", horizontal = True)
