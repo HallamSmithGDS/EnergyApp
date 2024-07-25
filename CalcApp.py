@@ -195,11 +195,12 @@ KWHourSaving = round(float(TotalExistKW-TotalReplaceKW),2)
 
 # Calculate financial savings
 TotalExistCost = sum(Exist_df['Annual Running Cost'])
-TotalRelampCost = sum(Exist_df['Annual Relamp Cost'])
 TotalReplaceCost = sum(Replace_df['Annual Running Cost'])
 CostSaving = TotalExistCost-TotalReplaceCost
 CostSavingMonthly = CostSaving / 12
 CostSaving = format_currency(CostSaving)
+
+
 
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
