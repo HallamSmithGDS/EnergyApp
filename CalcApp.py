@@ -97,25 +97,26 @@ with st.sidebar:
 
     # Choose how many fittings to add
     st.header("Input Data")
-    num_fittings = st.number_input("Enter the number of fitting types: ", value = 1, step = 1, placeholder="Type a number...")
+    num_fittings = st.number_input("Enter the number of fitting types: ", value = 1, step = 1, placeholder = "Type a number...")
     st.divider()
-    on = st.toggle("Enable Payback Calculator")
-    if on:
-        Purchase = st.number_input("LED Purchase Cost (£)", placeholder="Type a number...")
-        Install = st.number_input("LED Install Cost (£)", placeholder="Type a number...")
+    PaybackOn = st.toggle("Enable Payback Calculator")
+    if PaybackOn:
+        Purchase = st.number_input("LED Purchase Cost (£)", placeholder = "Type a number...")
+        Install = st.number_input("LED Install Cost (£)", placeholder = "Type a number...")
+        Years = st.slider("Years", 1, 15, 10)
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
     with col1:
         st.write(f"\n:red[Existing Fitting {i+1}:]")
-        name = st.text_input(f"\nName of existing fitting {i+1}: ", placeholder="Type a name...")
+        name = st.text_input(f"\nName of existing fitting {i+1}: ", placeholder = "Type a name...")
         qty = st.number_input(f"\nQuantity of existing fitting {i+1}: ", step = 1, placeholder="Type a qty...")
         wattage = st.number_input(f"\nWatts per existing fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
         st.divider()
    
     with col2:
         st.write(f"\n:green[Replacement Fitting {i+1}:]")
-        name_2 = st.text_input(f"\nName of replacement fitting {i+1}: ", placeholder="Type a name...")
+        name_2 = st.text_input(f"\nName of replacement fitting {i+1}: ", placeholder = "Type a name...")
         qty_2 = st.number_input(f"\nQuantity of replacement fitting {i+1}: ", value = qty, step = 1, placeholder="Type a qty...")
         wattage_2 = st.number_input(f"\nWatts per replacement fitting {i+1}: ", step = 0.1, placeholder="Type a wattage...")
         st.divider()
@@ -202,6 +203,12 @@ Carbon_df = pd.DataFrame({
     'Amount': [TotalExistCarbon, TotalReplaceCarbon]
 })
 
+
+if PaybackOn:
+    Payback_df = pd.DataFrame({
+
+    })
+
 # Print results
 st.button("Reset", type = "primary", key = 'calculate')
 if st.button("Calculate"):
@@ -213,10 +220,11 @@ if st.button("Calculate"):
     st.write(Replace_df[['Product Name','Quantity','Wattage','Annual KWH Use','Annual Running Cost','Annual CO2 Emissions']])
     st.write('')
     st.subheader("Summary:")
-    rescol1, rescol2 =st.columns(2)
+    rescol1, rescol2 = st.columns(2)
     with rescol2:
         st.write("Annual KW Hour Reduction: ", KWHourSaving , 'KWH')
         st.write("Annual Electricity Bill Reduction: ", CostSaving)
         st.write("Annual CO2 Reduction: ", CO2Saving , 'Tonnes')
     with rescol1:
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
+    if PaybackOn:
