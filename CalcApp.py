@@ -186,7 +186,7 @@ CostSaving = format_currency(TotalExistCost-TotalReplaceCost)
 
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
-TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])
+TotalReplaceCarbon = sum(Replace_df['Annual CO2 Emissions'])/1000
 CO2Saving = round(float(TotalExistCarbon-TotalReplaceCarbon),2)
 
 # Format dataframes to disply currency
@@ -219,4 +219,4 @@ if st.button("Calculate"):
     st.write('Annual Electricity Bill Reduction:', CostSaving)
     st.write('Annual CO2 Reduction: ', CO2Saving , 'Tonnes')
     st.write('')
-    st.bar_chart(carbon_df, x = 'Name', x_label = "KWH/Year", y_label = "CO2 Tonnes", horizontal = True)
+    st.bar_chart(Carbon_df, x = 'Name', x_label = "CO2 Emissions", y_label = "Tonnes Per Year", horizontal=True)
