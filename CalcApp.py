@@ -249,5 +249,5 @@ if st.button("Calculate"):
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
     if PaybackOn:
         st.write(Payback_df)
-        st.line_chart(Payback_df[['Existing',Replacement]], x = 'Year')
+        st.line_chart(Payback_df[['Existing','Replacement']], x = 'Year')
 
