@@ -25,7 +25,6 @@ UsageHours = 16
 UsageDays = 365 
 Rate = 0.175
 
-life = 5000
 lamp_cost = 2.5
 labour_cost = 5
 CO2_Factor = 0.575
@@ -62,7 +61,7 @@ def LampChange(MTBF, hours, days):
 
 # How much it costs annually to replace lamps
 def RelampCost(qty, relamp, labour, peryear):
-    return format_currency(qty * (relamp + labour) * peryear)
+    return qty * (relamp + labour) * peryear
 
 # How many Kilowatt hours are used per year
 def KWHPerYear(KWH, hours, days):
@@ -111,8 +110,10 @@ with st.sidebar:
     if AdvancedOn:
         annual_rate_slider = st.slider("Annual Energy Cost Increase (%)", 0.0, 10.0, 5.0) 
         annual_rate_increase = annual_rate_slider / 100
+        life = st.slider("Average Lifetime of Existing Lamps", 0, 20000, 10000)
     else:
         annual_rate_increase = 0.05
+        life = 10000
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
@@ -199,8 +200,7 @@ TotalReplaceCost = sum(Replace_df['Annual Running Cost'])
 CostSaving = TotalExistCost-TotalReplaceCost
 CostSavingMonthly = CostSaving / 12
 CostSaving = format_currency(CostSaving)
-
-
+TotalRelampCost = sum(Exist_df['Annual Relamp Cost'])
 
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
