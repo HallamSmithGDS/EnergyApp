@@ -96,7 +96,7 @@ with st.sidebar:
     
     # Choose how many fittings to add
     st.header("Input Data")
-    num_fittings = st.number_input("Enter the number of fitting types: ", value = 1, step = 1, placeholder = "Type a number...")
+    num_fittings = st.slider("Enter the number of fitting types: ", 0, 10, 1)
     st.divider()
     PaybackOn = st.toggle("Enable Payback Calculator")
     if PaybackOn:
@@ -108,9 +108,9 @@ with st.sidebar:
         st.divider()
     AdvancedOn = st.toggle("Enable Advanced Settings")
     if AdvancedOn:
-        annual_rate_slider = st.slider("Annual Energy Cost Increase (%)", 0.0, 10.0, 5.0) 
-        annual_rate_increase = annual_rate_slider / 100
-        life = st.slider("Average Lifetime of Existing Lamps", 0, 20000, 10000)
+        annual_rate_val = st.number_input("Annual Energy Cost Increase (%)", 0.0, 10.0, 5.0) 
+        annual_rate_increase = annual_rate_val / 100
+        life = st.number_input("Average Lifetime of Existing Lamps", 0, 20000, 10000)
     else:
         annual_rate_increase = 0.05
         life = 10000
@@ -201,6 +201,7 @@ CostSaving = TotalExistCost-TotalReplaceCost
 CostSavingMonthly = CostSaving / 12
 CostSaving = format_currency(CostSaving)
 TotalRelampCost = sum(Exist_df['Annual Relamp Cost'])
+RelampSaving = format_currency(TotalRelampCost)
 
 # Calculate carbon savings
 TotalExistCarbon = sum(Exist_df['Annual CO2 Emissions'])
@@ -288,6 +289,7 @@ if st.button("Calculate"):
     with rescol2:
         st.write(f"Annual KW Hour Reduction: {KWHourSaving} KWH")
         st.write(f"Annual Electricity Bill Reduction: {CostSaving}")
+        st.write(f"Annual Relamp Savings:" {RelampSaving})
         st.write(f"Annual CO2 Reduction: {CO2Saving} Tonnes")
     with rescol1:
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
