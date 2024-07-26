@@ -114,6 +114,7 @@ with st.sidebar:
     else:
         annual_rate_increase = 0.05
         life = 10000
+    st.divider()
 
 # Input parameters for multiple fittings
 for i in range(num_fittings):
