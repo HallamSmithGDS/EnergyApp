@@ -13,6 +13,9 @@ import locale
 import streamlit as st
 import math
 
+# Streamlit page configuration
+st.set_page_config(page_title = "LED Efficiency Calculator", page_icon = ":sunny:")
+
 # Set locale for currency formatting (example for GBP)
 locale.setlocale(locale.LC_ALL, 'en_GB.UTF-8')
 
