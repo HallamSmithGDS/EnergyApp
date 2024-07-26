@@ -289,7 +289,7 @@ if st.button("Calculate"):
     with rescol2:
         st.write(f"Annual KW Hour Reduction: {KWHourSaving} KWH")
         st.write(f"Annual Electricity Bill Reduction: {CostSaving}")
-        st.write(f"Annual Relamp Savings:" {RelampSaving})
+        st.write(f"Annual Relamp Savings: {RelampSaving}")
         st.write(f"Annual CO2 Reduction: {CO2Saving} Tonnes")
     with rescol1:
         st.bar_chart(Carbon_df, x = 'Name', x_label = "Tonnes Per Year", y_label = "CO2 Emissions", color = "#C39D50", horizontal=True, height = 200)
