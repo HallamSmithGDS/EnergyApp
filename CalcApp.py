@@ -12,6 +12,8 @@ import pandas as pd
 import locale
 import streamlit as st
 import math
+from fpdf import FPDF
+import base64
 
 # Set locale for currency formatting (example for GBP)
 locale.setlocale(locale.LC_ALL, 'en_GB.UTF-8')
@@ -310,3 +312,22 @@ if st.button("Calculate"):
         else:
             st.write("The system does not pay for itself within the given years.")
         st.line_chart(Payback_Graph, x = 'Year', x_label = "Year", y_label = 'Cumulative Energy Cost (£)', color = ["#FF4436", "#34CC57"])
+
+
+
+report_text = st.text_input("Report Text")
+
+
+export_as_pdf = st.button("Export Report")
+
+def create_download_link(val, filename):
+    b64 = base64.b64encode(val)  # val looks like b'...'
+    return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
+
+if export_as_pdf:
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font('Arial', 'B', 16)
+    pdf.cell(40, 10, report_text)
+    
+    html = create_download_link(pdf.output(dest="S").encode("latin-1"),
