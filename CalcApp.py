@@ -96,7 +96,7 @@ with st.sidebar:
     
     # Choose how many fittings to add
     st.header("Input Data")
-    num_fittings = st.slider("Enter the number of fitting types: ", 0, 10, 1)
+    num_fittings = st.number_input("Enter the number of fitting types (up to 10): ", 0, 10, 1)
     st.divider()
     PaybackOn = st.toggle("Enable Payback Calculator")
     if PaybackOn:
